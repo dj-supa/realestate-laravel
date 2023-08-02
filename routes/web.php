@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 // Home Page
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/home');
 });
 // show all listing
-Route::get('/{property_type}/{listing_type}/', function () {
-    return view('welcome');
+Route::get('/{property_type}/{listing_type}/{city}', function () {
+    return view('pages/listings');
 });
 // single listing
 Route::get('/listing/{slug}/{id}', function () {
