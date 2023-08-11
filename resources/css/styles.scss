@@ -8,8 +8,15 @@
 
 @use'./layouts/main.layout.scss';
 
+@use'./layouts/account-layout.scss';
+
 @use'./components/header.scss';
 
 @use'./components/hero.scss';
 
-@use'./pages/listings';
+@use'./pages/listings.scss';
+
+@use'./pages/show-status';
+
+@use'./pages/auth';
+

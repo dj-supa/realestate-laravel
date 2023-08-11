@@ -16,27 +16,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages/home');
 });
+// single listing
+Route::get('/listing/{slug}/{id}', function () {
+    return view('pages/single-listing');
+});
 // show all listing
 Route::get('/{property_type}/{listing_type}/{city}', function () {
     return view('pages/listings');
 });
-// single listing
-Route::get('/listing/{slug}/{id}', function () {
-    return view('welcome');
-});
 // user login
 Route::get('/login', function () {
-    return view('welcome');
+    return view('pages/login');
 });
 // user register
 Route::get('/register', function () {
-    return view('welcome');
+    return view('pages/register');
 });
 // user saved listings
 Route::get('/account/saved', function () {
-    return view('welcome');
+    return view('pages/saved-listings');
 });
 // user showing status
 Route::get('/account/show-status', function () {
-    return view('welcome');
+    return view('pages/show-status');
 });
