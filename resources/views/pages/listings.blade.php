@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 @for ($i = 1; $i <= 12; $i++) <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="listings-properties__item">
+                    <a href="/listing/23-grand-ave-sanfrancisco-ca-95484/23" class="listings-properties__item">
                         <img src="https://toptenrealestatedeals.com/wp-content/uploads/2019/09/1-1.jpg" alt="">
                         <div class="listings-properties__saved">
                             <i class="fa-solid fa-heart"></i>
@@ -44,7 +44,7 @@
                             San Francisco, CA 94102</span>
                         <div class="listings-properties__item-line"></div>
                         <span class="listings-properties__item-owner">Perez Realty</span>
-                    </div>
+                    </a>
                 </div> @endfor
                 <div class="col-sm-6 col-lg-4 col-xl-3">
                     <div class="listings-properties__item">
