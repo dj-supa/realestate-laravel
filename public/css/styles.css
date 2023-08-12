@@ -12538,18 +12538,20 @@ textarea.form-control-lg {
 }
 .single-listing-page .listing-top__form {
   width: 300px;
-  height: 500px;
   background: white;
   border-radius: 15px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   padding: 20px;
 }
-.single-listing-page .listing-top__form-title {
+.single-listing-page .listing-top__form-label {
+  display: block;
   font-size: 1rem;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 .single-listing-page .listing-top__form-group {
   width: 100%;
+  margin-bottom: 0.5rem;
   margin-bottom: 0.5rem;
 }
 .single-listing-page .listing-top__form-group--horz {
@@ -12559,6 +12561,7 @@ textarea.form-control-lg {
   width: 100%;
 }
 .single-listing-page .listing-top__form-option, .single-listing-page .listing-top__form-button {
+  width: 100%;
   padding: 0 15px;
   height: 40px;
   display: flex;
@@ -12576,4 +12579,14 @@ textarea.form-control-lg {
 }
 .single-listing-page .listing-top__form-option:hover, .single-listing-page .listing-top__form-button:hover {
   background: rgb(245, 246, 247);
+}
+.single-listing-page .listing-top__form-button {
+  margin-right: 0;
+  border: 1px solid rgb(219, 105, 29);
+  color: white;
+  background: rgb(219, 105, 29);
+}
+.single-listing-page .listing-top__form-button:hover {
+  color: white;
+  background: rgb(219, 105, 29);
 }

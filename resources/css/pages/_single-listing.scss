@@ -24,19 +24,21 @@
         }
         &__form{
             width: 300px;
-            height: 500px;
             background: white;
             border-radius: 15px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
             padding: 20px;
             
         }
-        &__form-title{
+        &__form-label{
+            display: block;
             font-size: 1rem;
             font-weight: 700;
+            margin-bottom: .5rem;
         }
         &__form-group{
             width: 100%;
+            margin-bottom: .5rem;
             &--horz{
                 display: flex;
                 .listing-top__form-option{
@@ -46,6 +48,8 @@
             margin-bottom: .5rem;
         }
         &__form-option, &__form-button{
+
+            width: 100%;
             padding: 0 15px;
             height: 40px;
             display: flex;
@@ -64,6 +68,16 @@
                 background: rgb(245, 246, 247);
             }
 
+        }
+        &__form-button{
+            margin-right: 0;
+            border: 1px solid rgb(219, 105, 29);
+            color: white;
+            background: rgb(219, 105, 29);
+            &:hover{
+                color: white;
+                background: rgb(219, 105, 29);
+            }
         }
     }
 }
