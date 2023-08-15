@@ -1,6 +1,6 @@
 <header class="header">
     <div class="container">
-        <a href="/" class="header__logo">
+        <a href="/home" class="header__logo">
             Smith Realty
         </a>
 
