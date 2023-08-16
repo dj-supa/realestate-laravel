@@ -1,19 +1,70 @@
-<x-guest-layout>
+@extends('layouts.main') 
+
+@section('page-title', 'Login - Smith Realty')
+
+@section('content')
+
+
+<div class="auth-page auth-page--login">
+<form method="POST" action="{{ route('login') }}" class="auth-page__form">
+        @csrf
+        <h3 class="auth-page__title">Login</h3>
+        <div class="auth-page__form-group">
+            <label for="email" class="auth-page__form-label">Email</label>
+            <input type="email" name="email" class="auth-page__form-input" value="{{old('email')}}">
+        </div>
+        @error('email')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+        @enderror
+        <div class="auth-page__form-group">
+            <label for="password" class="auth-page__form-label">Password</label>
+            <input type="password" name="password" required autocomplete="current-password" class="auth-page__form-input">
+        </div>
+        @error('password')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+        @enderror
+        <div class="auth-page__form-group">
+            <label for="password" class="auth-page__form-label">Remember Me <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember"></label>
+            
+        </div>
+        <div class="auth-page__form-group">
+        @if (Route::has('password.request'))
+                <a href="{{ route('password.request') }}">
+                    Forgot your password?
+                </a>
+            @endif
+        </div>
+        
+
+        <div class="auth-page__form-group">
+            <button type="submit" class="auth-page__form-button">Login</button>
+        </div>
+    </form>
+</div>
+@endsection
+
+
+
+
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <!-- <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
-        @csrf
+        @csrf  -->
 
         <!-- Email Address -->
-        <div>
+         <!-- <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        </div>  -->
 
         <!-- Password -->
-        <div class="mt-4">
+        <!-- <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
@@ -22,10 +73,10 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        </div>  -->
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        <!-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
@@ -43,5 +94,4 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-    </form>
-</x-guest-layout>
+    </form> -->

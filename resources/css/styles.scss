@@ -22,11 +22,13 @@
 
 @use"./pages/single-listing.scss";
 
-// @use"./resources/css/app.css";
 
-// @use"./node_modules/mini-css-extract-plugin/dist/loader.js";
+.error-sub-text{
+    padding: 10px 0;
+    color: red;
+    font-size: .8rem;
+}
 
-// @use"/node_modules/sass-loader/dist/cjs.js";
 
 
 

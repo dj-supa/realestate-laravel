@@ -1,5 +1,7 @@
 @extends('layouts.main') @section('page-title', 'Login - Smith Realty')
 @section('content')
+
+
 <div class="auth-page auth-page--login">
     <form action="" method="POST" class="auth-page__form">
         <h3 class="auth-page__title">Login</h3>
