@@ -1,23 +1,87 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+@extends('layouts.main') @section('page-title', 'Register - Smith Realty')
+@section('content')
+<div class="auth-page auth-page--login">
+    <form method="POST" action="{{ route('register') }}" class="auth-page__form">
         @csrf
+        <h3 class="auth-page__title">Register</h3>
+        <div class="auth-page__form-group">
+            <label for="name" class="auth-page__form-label">Name</label>
+            <input type="text" name="name" class="auth-page__form-input" value="{{old('email')}}">
+            @error('name')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+        <div class="auth-page__form-group">
+            <label for="email" class="auth-page__form-label">Email</label>
+            <input type="email" name="email" class="auth-page__form-input" value="{{old('email')}}">
+            @error('email')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+        <div class="auth-page__form-group">
+            <label for="password" class="auth-page__form-label">Password</label>
+            <input type="password" name="password" required autocomplete="current-password"
+                class="auth-page__form-input">
+            @error('password')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+        <div class="auth-page__form-group">
+            <label for="password_confirmation" class="auth-page__form-label">Confirm Password</label>
+            <input type="password" name="password_confirmation" required autocomplete="current-password"
+                class="auth-page__form-input">
+            @error('password')
+            <div class="error-sub-text">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+        <div class="auth-page__form-group">
+            <a href="{{ route('login') }}">
+                Already registered?
+            </a>
+        </div>
+        <div class="auth-page__form-group">
+            @if (Route::has('password.request'))
+            <a href="{{ route('password.request') }}">
+                Forgot your password?
+            </a>
+            @endif
+        </div>
+        <div class="auth-page__form-group">
+            <button type="submit" class="auth-page__form-button">Register</button>
+        </div>
+    </form>
+</div>
+@endsection
 
-        <!-- Name -->
-        <div>
+
+
+<!-- <form method="POST" action="{{ route('register') }}">
+        @csrf -->
+
+<!-- Name -->
+<!-- <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+        </div> -->
 
-        <!-- Email Address -->
-        <div class="mt-4">
+<!-- Email Address -->
+<!-- <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        </div> -->
 
-        <!-- Password -->
-        <div class="mt-4">
+<!-- Password -->
+<!-- <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
@@ -26,10 +90,10 @@
                             required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        </div> -->
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
+<!-- Confirm Password -->
+<!-- <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
@@ -48,5 +112,4 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-    </form>
-</x-guest-layout>
+    </form> -->
