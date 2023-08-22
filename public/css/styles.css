@@ -12194,6 +12194,10 @@ textarea.form-control-lg {
   margin-right: 1.5rem;
   color: #3366cc;
 }
+.header__account-link--anchor {
+  margin-right: 1.5rem;
+  text-decoration: none;
+}
 
 .hero {
   padding: 0 50px;

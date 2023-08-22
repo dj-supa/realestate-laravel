@@ -43,5 +43,10 @@
         border: 1px solid #3366cc;
         margin-right: 1.5rem;
         color: #3366cc;
+        &--anchor{
+            margin-right: 1.5rem;
+            text-decoration: none;
+
+        }
     }
 }

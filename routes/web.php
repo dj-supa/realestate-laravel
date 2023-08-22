@@ -14,14 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function () {
+    Route::get('/', function () {
+        return view('admin/dashboard');
+    })->name('dashboard');;
+    
+    Route::group([
+        'prefix' => 'listings',
+        'as' => 'listings.'
+    ], function(){
+        Route::get('/', 
+        [\App\Http\Controllers\Admin\ListingController::class, 'index'])->name('index');
+
+        Route::get('/create', 
+        [\App\Http\Controllers\Admin\ListingController::class, 'create'])->name('create');
+
+        Route::get('/{id}/edit', 
+        [\App\Http\Controllers\Admin\ListingController::class, 'edit'])->name('edit');
+    });
 });
 
-// Home Page
-Route::get('/home', function () {
+
+Route::get('/', function () {
     return view('pages/home');
 });
+
+
 // single listing
 Route::get('/listing/{slug}/{id}', function () {
     return view('pages/single-listing');
@@ -29,27 +50,22 @@ Route::get('/listing/{slug}/{id}', function () {
 // show all listing
 Route::get('/{property_type}/{listing_type}/{city}', function () {
     return view('pages/listings');
-});
-// user login
-Route::get('/home/login', function () {
-    return view('pages/login');
-});
-// user register
-Route::get('/home/register', function () {
-    return view('pages/register');
-});
+})->name('listings');
 // user saved listings
-Route::get('/account/saved', function () {
+Route::get('/account', function () {
     return view('pages/saved-listings');
-});
+})->name('account');;
 // user showing status
 Route::get('/account/show-status', function () {
     return view('pages/show-status');
-});
+})->name('show-status');;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
