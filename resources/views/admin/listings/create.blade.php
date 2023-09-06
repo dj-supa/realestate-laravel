@@ -44,8 +44,8 @@
                                 State
                             </label>
                             <select name="state" id="state" class="form-control">
-                                <option value="CA" @selected(old('version')=="CA" )>California</option>
-                                <option value="HI" @selected(old('version')=="HI" )>Hawaii</option>
+                                <option value="CA" @selected(old('state')=="CA" )>California</option>
+                                <option value="HI" @selected(old('state')=="HI" )>Hawaii</option>
                             </select>
                             @error('state')
                             <div class="error-sub-text">

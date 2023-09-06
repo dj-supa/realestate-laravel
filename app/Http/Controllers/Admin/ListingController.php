@@ -73,24 +73,67 @@ class ListingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug, $id)
     {
-        return view('admin/listings/edit');
+        $listing = Listing::where([
+            'id' => $id,
+            'slug' => $slug
+            ])->first();
+
+            
+        return view('admin/listings/edit',['listing' => $listing]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $slug, string $id)
     {
-        //
+        request()->validate([
+            'address' => 'required',
+            'address2' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required|integer',
+            'bedrooms' => 'required|integer',
+            'bathrooms' => 'required|integer',
+            'squarefootage' => 'required'
+
+
+
+
+
+
+
+        ]);
+        $listing = Listing::where([
+            'id' => $id,
+            'slug' => $slug
+            ])->first();
+        $listing->address = $request->get('address');
+        $listing->address2 = $request->get('address2');
+        $listing->city = $request->get('city');
+        $listing->state = $request->get('state');
+        $listing->zipcode = $request->get('zipcode');
+        $listing->bedrooms = $request->get('bedrooms');
+        $listing->bathrooms = $request->get('bathrooms');
+        $listing->squarefootage = $request->get('squarefootage');
+
+        //update slug 
+        $listing->slug = Helper::slugify("{$request->address}-{$request->city}-{$request->state}-{$request->zipcode}");
+        $listing->save();
+
+        return redirect("/admin/listings/{$listing->slug}/{$listing->id}/edit")->with('success', 'Listing Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($slug, $id)
     {
-        //
+        $listing = Listing::find($id);
+        $listing->delete();
+
+        return redirect("/admin/listings")->with('success', 'Listing Has Been Deleted Successfully');
     }
 }
