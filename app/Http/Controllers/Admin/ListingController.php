@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Listing;
 use App\Helper\Helper;
+use Illuminate\Support\Facades\DB;
 
 class ListingController extends Controller
 {
@@ -14,7 +15,11 @@ class ListingController extends Controller
      */
     public function index()
     {
-        return view('admin/listings/index');
+        $listings = Listing::paginate(2);
+        //return $listings;
+        return view('admin/listings/index', [
+            'listings' => $listings
+        ]);
     }
 
     /**

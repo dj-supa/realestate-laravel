@@ -6,7 +6,8 @@
             <h1>Edit a Listing</h1>
             <h6 class="c-grey-900">Complex Form Layout</h6>
             <div class="mT-30">
-                <form method="POST" action="{{ route('admin.listings.update', ['slug' => $listing->slug, 'id' => $listing->id]) }}">
+                <form method="POST"
+                    action="{{ route('admin.listings.update', ['slug' => $listing->slug, 'id' => $listing->id]) }}">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -22,7 +23,8 @@
                     <div class="mb-3">
                         <label class="form-label" for="address2">Address 2</label>
                         <input type="text" class="form-control" id="address2" name="address2"
-                            placeholder="ex:Apartment, studio, or floor" value="{{old('address2', $listing->address2)}}" />
+                            placeholder="ex:Apartment, studio, or floor"
+                            value="{{old('address2', $listing->address2)}}" />
                         @error('address2')
                         <div class="error-sub-text">
                             {{$message}}
@@ -56,8 +58,7 @@
                         </div>
                         <div class="mb-3 col-md-2">
                             <label class="form-label" for="zipcode">Zip</label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode"
-                            placeholder="ex:12333"
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="ex:12333"
                                 value="{{old('zipcode', $listing->zipcode)}}" />
                             @error('zipcode')
                             <div class="error-sub-text">
@@ -106,7 +107,10 @@
                         Save
                     </button>
 
-                    <a href="{{route('admin.listings.delete', ['slug' => $listing->slug, 'id' => $listing->id])}}" onclick="return confirm('are you sure you want to delete this listing')" class="btn btn-danger btn-color">Delete</a>
+                    <a href="{{route('admin.listings.delete', ['slug' => $listing->slug, 'id' => $listing->id])}}"
+                        onclick="return confirm('are you sure you want to delete this listing')"
+                        class="btn btn-danger btn-color">Delete
+                    </a>
                 </form>
             </div>
         </div>
