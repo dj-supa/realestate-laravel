@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Listing;
+use App\Models\Listing; 
 use App\Models\User;
 use App\Helper\Helper;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class ListingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.  
      */
     public function index()
     {
