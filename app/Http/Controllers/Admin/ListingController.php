@@ -67,6 +67,8 @@ class ListingController extends Controller
         $listing->bedrooms = $request->get('bedrooms');
         $listing->bathrooms = $request->get('bathrooms');
         $listing->squarefootage = $request->get('squarefootage');
+        $listing->status = "draft";
+
         $listing->slug = Helper::slugify("{$request->address}-{$request->city}-{$request->state}-{$request->zipcode}");
         $listing->save();
 
@@ -133,6 +135,10 @@ class ListingController extends Controller
         $listing->bedrooms = $request->get('bedrooms');
         $listing->bathrooms = $request->get('bathrooms');
         $listing->squarefootage = $request->get('squarefootage');
+        $listing->status = $request->get('status');
+        $listing->description = $request->get('description');
+
+
 
         //update slug 
         $listing->slug = Helper::slugify("{$request->address}-{$request->city}-{$request->state}-{$request->zipcode}");

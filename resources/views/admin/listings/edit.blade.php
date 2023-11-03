@@ -109,10 +109,8 @@
                                 <h3>Details</h3>
                                 <label class="form-label" for="description">Description</label>
                                 <textarea class="form-control" name="description" id="description"
-                                    placeholder="ex: talk about property" autocomplete="off">
-                                    {{old('description', $listing->description)}}
-
-                                </textarea>
+                                    placeholder="ex: talk about property"
+                                    autocomplete="off">{{old('description', $listing->description)}}</textarea>
                                 @error('description')
                                 <div class="error-sub-text">
                                     {{$message}}
@@ -146,7 +144,8 @@
                         <div class="form-group" style="display: flex; margin-top: 1rem; flex-direction: column;">
                             <a href="{{route('admin.listings.delete', ['slug' => $listing->slug, 'id' => $listing->id])}}"
                                 onclick="return confirm('are you sure you want to delete this listing')"
-                                class="btn cur-p btn-outline-success" style="width: 100%; margin-top: 1rem; color: black;">Gallery
+                                class="btn cur-p btn-outline-success"
+                                style="width: 100%; margin-top: 1rem; color: black;">Gallery
                             </a>
                         </div>
                         <div class="form-group" style="display: flex; margin-top: 1rem; flex-direction: column;">
@@ -158,7 +157,6 @@
                                 class="btn btn-danger btn-color" style="width: 100%; margin-top: 1rem;">Delete
                             </a>
                         </div>
-                       
                     </div>
                 </div>
             </div>
