@@ -17,29 +17,52 @@ class PhotoController extends Controller
     public function index($slug, $id)
     {
         $photos = Photo::where(['user_id' => auth()->user()->id, 'listing_id' => $id])->paginate(5);
-
-        if(!$photos->hasPages()){
-            return redirect("/admin/listings/($slug)/($id)/photos/create");
+        
+        if($photos->total() < 1) {
+            return redirect("/admin/listings/{$slug}/{$id}/photos/create");
         }
         return view('admin/listings/photos/index', [
-            'listings' => $listings
+            'photos' => $photos,
+            'slug' => $slug, 
+            'id' => $id
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($slug, $id)
     {
-        return view("/admin/listings/photos/create");
+        return view('admin/listings/photos/create',[
+            'slug' => $slug,
+            'id' => $id
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $slug, $id)
     {
-        //
+        $this->authorize('create', Listing::class);
+
+        request()->validate([
+            'image' => 'required|image',
+        ]);
+
+        $newName = time() . '-' . $request->file('image')->getClientOriginalName();
+        $size = $request->file('image')->getSize();
+        $name = $newName;
+        $request->file('image')->move(public_path('img'), $name);
+
+        $photo = new Photo();
+        $photo->name = $name;
+        $photo->size = $size;
+        $photo->user_id = auth()->user()->id;
+        $photo->listing_id = $id;
+        $photo->save();
+
+        return redirect("/admin/listings/{$slug}/{$id}/photos")->with('success', 'Created New Listing Successfully');
     }
 
     /**
