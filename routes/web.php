@@ -74,7 +74,7 @@ Route::get('/', function () {
 // single listing
 
 Route::get('/listing/{slug}/{id}', 
-        [\App\Http\Controllers\Front\ListingController::class, 'show'])->name('frontlistings.show');
+[\App\Http\Controllers\Front\ListingController::class, 'show'])->name('frontlisting.show');
 
 
 // show all listing

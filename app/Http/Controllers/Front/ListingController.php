@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,10 +46,12 @@ class ListingController extends Controller
             'slug' => $slug
             ])->first();
             $photos = Photo::where([
-                'listing_id' = $id
+                'listing_id' => $id
             ])->get();
-        // return $listing;
-        return view('pages/single-listing', ['listing' => $listing]);
+        return view('pages/single-listing', [
+            'listing' => $listing,
+            'photos' => $photos,
+        ]);
     }
 
     /**
