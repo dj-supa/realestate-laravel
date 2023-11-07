@@ -54,21 +54,14 @@ Route::group([
         Route::get('/{slug}/{id}/photos/create', 
         [\App\Http\Controllers\Admin\PhotoController::class, 'create'])->name('photos.create');
 
-
         Route::post('/{slug}/{id}/photos', 
         [\App\Http\Controllers\Admin\PhotoController::class, 'store'])->name('photos.store');
 
-
-        Route::get('/{slug}/{id}/photos/{photo_id}/edit', 
-        [\App\Http\Controllers\Admin\PhotoController::class, 'edit'])->name('photos.edit');
-
-
-        Route::put('/{slug}/{id}/photos', 
-        [\App\Http\Controllers\Admin\PhotoController::class, 'update'])->name('photos.update');
-
-
         Route::get('/{slug}/{id}/photos/{photo_id}/delete', 
-        [\App\Http\Controllers\Admin\PhotoController::class, 'delete'])->name('photos.delete');
+        [\App\Http\Controllers\Admin\PhotoController::class, 'destroy'])->name('photos.delete');
+
+        Route::get('/{slug}/{id}/photos/{photo_id}/featured', 
+        [\App\Http\Controllers\Admin\PhotoController::class, 'featured'])->name('photos.featured');
     });
 });
 

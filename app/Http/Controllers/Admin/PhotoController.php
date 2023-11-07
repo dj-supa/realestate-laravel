@@ -60,40 +60,40 @@ class PhotoController extends Controller
         $photo->size = $size;
         $photo->user_id = auth()->user()->id;
         $photo->listing_id = $id;
+        $photo->featured = 0;
         $photo->save();
 
         return redirect("/admin/listings/{$slug}/{$id}/photos")->with('success', 'Created New Listing Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy($slug, $id, $photo_id)
     {
-        //
+        $photo = Photo::find($photo_id);
+        // $this->authorize('delete', $listing);
+        $photo->delete();
+
+        return redirect("/admin/listings/{$slug}/{$id}/photos")->with('success', 'Photo Has Been Deleted Successfully');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function featured($slug, $id, $photo_id)
     {
-        //
-    }
+        $old_photo = Photo::where([
+            'listing_id' => $id,
+            'featured' => 1,
+            ])->first();
+            if($old_photo != null){
+                $old_photo->featured = 0;
+                $old_photo->save();
+            }
+        
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        $new_photo = Photo::where([
+            'listing_id' => $id,
+            'id' => $photo_id,
+            ])->first();
+        $new_photo->featured = 1;
+        $new_photo->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect("/admin/listings/{$slug}/{$id}/photos")->with('success', 'Photo Has Been Made Featured Successfully');
     }
 }
