@@ -78,7 +78,7 @@ Route::get('/listing/{slug}/{id}',
 
 
 // show all listing
-Route::get('/{property_type}/{listing_type?}/{state?}/{city?}/{zipcode?}',
+Route::get('/realestate/{property_type}/{listing_type?}/{state?}/{city?}/{zipcode?}',
     [\App\Http\Controllers\Front\ListingController::class, 'index'])->name('frontlisting.index');
 
 // user saved listings

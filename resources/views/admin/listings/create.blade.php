@@ -9,6 +9,64 @@
                 <form method="POST" action="{{ route('admin.listings.store') }}">
                     @csrf
                     <div class="mb-3">
+                        <label class="form-label" for="price">Price</label>
+                        <input type="text" class="form-control" id="price" name="price" placeholder="ex:100000.00"
+                            value="{{old('price')}}" />
+                        @error('price')
+                        <div class="error-sub-text">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="PropertyType">Property Type</label>
+                        <select name="property_type" class="form-control" id="PropertyType">
+                            <option value="home" 
+                                @if (old('property_type') == "home" ) 
+                                    selected 
+                                @endif
+                            >
+                                Home
+                            </option>
+                            <option value="condo" 
+                                @if (old('property_type') == "condo" ) 
+                                    selected 
+                                @endif
+                            >
+                                Condo
+                            </option>
+                        </select>
+                        @error('price')
+                        <div class="error-sub-text">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="ListingType">Listing Type</label>
+                        <select name="listing_type" class="form-control" id="ListingType">
+                            <option value="for_sale"
+                            @if (old('listing_type') == "for_sale") 
+                                selected 
+                            @endif
+                            >
+                                For Sale
+                            </option>
+                            <option value="for_rent"
+                            @if (old('listing_type') == "for_rent") 
+                                selected 
+                            @endif
+                            >
+                                For Rent
+                            </option>
+                        </select>
+                        @error('price')
+                        <div class="error-sub-text">
+                            {{$message}}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="address">Address</label>
                         <input type="text" class="form-control" id="address" name="address"
                             placeholder="ex:1234 Main St" value="{{old('address')}}" />
@@ -55,8 +113,7 @@
                         </div>
                         <div class="mb-3 col-md-2">
                             <label class="form-label" for="zipcode">Zip</label>
-                            <input type="text" class="form-control" id="zipcode" name="zipcode"
-                            placeholder="ex:12333"
+                            <input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="ex:12333"
                                 value="{{old('zipcode')}}" />
                             @error('zipcode')
                             <div class="error-sub-text">
