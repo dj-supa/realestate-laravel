@@ -78,13 +78,14 @@ Route::get('/listing/{slug}/{id}',
 
 
 // show all listing
-Route::get('/{property_type}/{listing_type}/{city}', function () {
-    return view('pages/listings');
-})->name('listings');
+Route::get('/{property_type}/{listing_type?}/{state?}/{city?}/{zipcode?}',
+    [\App\Http\Controllers\Front\ListingController::class, 'index'])->name('frontlisting.index');
+
 // user saved listings
 Route::get('/account', function () {
     return view('pages/saved-listings');
 })->name('account');;
+
 // user showing status
 Route::get('/account/show-status', function () {
     return view('pages/show-status');
